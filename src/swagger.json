@@ -30,8 +30,8 @@
                                     }
                                 },
                                 "example": {
-                                    "name": "category name sample",
-                                    "description": "category description sample"
+                                    "name": "SUV",
+                                    "description": "Categoria de carro SUV"
                                 }
                             }
                         }
@@ -39,10 +39,52 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Created"
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "id": "db4de624-9f8e-499f-8efa-b8d344deaccc",
+                                        "name": "SUV",
+                                        "description": "Categoria de carro SUV",
+                                        "created_at": "2022-02-15T14:24:57.373Z"
+                                    }
+                                }
+                            }
+                        }
                     },
                     "500": {
-                        "description": "Category already exists"
+                        "description": "Category already exists",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "error": "Category already exists!"
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -68,6 +110,124 @@
                                             "description": {
                                                 "type": "string"
                                             }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/specifications": {
+            "post": {
+                "tags": [
+                    "Specifications"
+                ],
+                "summary": "Create a new specification",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Câmbio automático",
+                                    "description": "Carro com câmbio automático"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "id": "3d6cf127-8d16-42f0-8c04-9888e16ff1d5",
+                                        "name": "Câmbio manual",
+                                        "description": "Carro com câmbio manual",
+                                        "created_at": "2022-02-14T13:40:03.044Z"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Specification already exists!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": "string"
+                                    },
+                                    "example": {
+                                        "error": "Specification already exists!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Specifications"
+                ],
+                "summary": "List all specifications",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "example": {
+                                            "id": "3d6cf127-8d16-42f0-8c04-9888e16ff1d5",
+                                            "name": "Câmbio manual",
+                                            "description": "Carro com câmbio manual",
+                                            "created_at": "2022-02-14T13:40:03.044Z"
                                         }
                                     }
                                 }
