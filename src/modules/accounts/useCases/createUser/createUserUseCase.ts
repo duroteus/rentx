@@ -1,3 +1,4 @@
+import { hash } from "bcryptjs";
 import { inject, injectable } from "tsyringe";
 
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
@@ -28,10 +29,12 @@ class CreateUserUseCase {
             throw new Error("This driver license is already in use.");
         }
 
+        const passwordHash = await hash(password, 8);
+
         await this.usersRepository.create({
             name,
             email,
-            password,
+            password: passwordHash,
             driver_license,
         });
     }
