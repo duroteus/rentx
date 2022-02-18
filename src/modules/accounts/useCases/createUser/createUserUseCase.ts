@@ -1,6 +1,7 @@
 import { hash } from "bcryptjs";
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "../../../../errors/AppError";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
@@ -22,11 +23,11 @@ class CreateUserUseCase {
             await this.usersRepository.findByDriverLicense(driver_license);
 
         if (emailAlreadyTaken) {
-            throw new Error("This email is already taken");
+            throw new AppError("This email is already taken");
         }
 
         if (usedDriverLicense) {
-            throw new Error("This driver license is already in use.");
+            throw new AppError("This driver license is already in use.");
         }
 
         const passwordHash = await hash(password, 8);
