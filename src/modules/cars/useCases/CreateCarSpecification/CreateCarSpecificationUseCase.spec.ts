@@ -47,14 +47,15 @@ describe("Create Car Specification", () => {
     });
 
     it("shouldn't be able to add a new specification to a non-existent car", async () => {
-        expect(async () => {
-            const car_id = "1234";
-            const specifications_id = ["54321"];
-
-            await createCarSpecificationUseCase.execute({
+        const car_id = "1234";
+        const specifications_id = ["54321"];
+        expect(
+            createCarSpecificationUseCase.execute({
                 car_id,
                 specifications_id,
-            });
-        }).rejects.toBeInstanceOf(AppError);
+            })
+        ).rejects.toEqual(
+            new AppError("This car isn't registered in our system.")
+        );
     });
 });

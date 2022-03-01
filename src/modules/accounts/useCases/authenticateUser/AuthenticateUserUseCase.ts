@@ -35,7 +35,7 @@ class AuthenticateUserUseCase {
         const passwordMatch = await compare(password, user.password);
 
         if (!passwordMatch) {
-            throw new AppError("Email or password incorrent!");
+            throw new AppError("Email or password incorrect!");
         }
 
         const token = sign({}, "ebeddd22b58fb7502ec2ea46ddd79154", {

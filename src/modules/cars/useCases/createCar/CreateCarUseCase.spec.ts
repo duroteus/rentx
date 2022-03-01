@@ -24,19 +24,19 @@ describe("Create Car", () => {
         });
     });
 
-    it("shouldn't be able to create a car with already registered license plate", () => {
-        expect(async () => {
-            await createCarUseCase.execute({
-                name: "Car1",
-                description: "Car description",
-                daily_rate: 100,
-                license_plate: "PNQ-1235",
-                fine_amount: 60,
-                brand: "Brand",
-                category_id: "category",
-            });
+    it("shouldn't be able to create a car with already registered license plate", async () => {
+        await createCarUseCase.execute({
+            name: "Car1",
+            description: "Car description",
+            daily_rate: 100,
+            license_plate: "PNQ-1235",
+            fine_amount: 60,
+            brand: "Brand",
+            category_id: "category",
+        });
 
-            await createCarUseCase.execute({
+        await expect(
+            createCarUseCase.execute({
                 name: "Car2",
                 description: "Car description",
                 daily_rate: 100,
@@ -44,8 +44,10 @@ describe("Create Car", () => {
                 fine_amount: 60,
                 brand: "Brand",
                 category_id: "category",
-            });
-        }).rejects.toBeInstanceOf(AppError);
+            })
+        ).rejects.toEqual(
+            new AppError("This license plate is already registered.")
+        );
     });
 
     it("should be able to register a new car with availability by default", async () => {
