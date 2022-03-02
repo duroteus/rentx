@@ -44,6 +44,8 @@ describe("Create Category Controller", () => {
             .set({
                 Authorization: `Bearer ${token}`,
             });
+        
+        console.log(response.body)
 
         expect(response.status).toBe(201);
     });
