@@ -3,3 +3,4 @@ tmp/*
 README.md
 diagrama.png
 coverage
+.env
