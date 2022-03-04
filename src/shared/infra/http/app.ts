@@ -13,7 +13,7 @@ import { router } from "./routes";
 
 import "@shared/container";
 
-createConnection("database_ignite");
+createConnection();
 const app = express();
 
 app.use(express.json());
