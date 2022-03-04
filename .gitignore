@@ -1,5 +1,9 @@
 node_modules
+.vscode
 tmp/*
 diagrama.png
 coverage
 .env
+!tmp/.gitkeep
+dist
+ormconfig.json
