@@ -1,6 +1,5 @@
 node_modules
 tmp/*
-README.md
 diagrama.png
 coverage
 .env
